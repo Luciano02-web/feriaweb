@@ -1,0 +1,81 @@
+{% extends "app_feria/padre2.html" %}
+
+
+
+{% block titulo %}
+
+<h1 style="color:black ;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px; ;">
+    Todo por $100
+</h1>
+{% endblock %}
+
+
+{% block descripcion %}
+
+<div class="container text-center">
+    <div class="row">
+        {% for to in todo %}
+        <div class="col-sm-6 align-items-center">
+            <div class="card-body">
+                <a class="list-group-item" style="border-radius:110px;border:outset;border-width: 3px;" href="{% url 'Detalle_todo100' to.id %}">
+                    {% if to.imagen %}
+                    <img class="card-img-top" 
+                    src="{{to.imagen.url}}"style="
+                    width: 319px;
+                    height: 410px;">
+                    {% endif %}
+            
+                        
+                    <h5 style="font-family:'Times New Roman', Times, serif ;">
+                        Codigo {{to.codigo}}
+                    </h5>
+                    <h4 style="font-family:'Times New Roman', Times, serif ;">
+                        <strong>${{to.precio}}</strong>
+                    </h4>
+    
+                    
+            
+                    {% if request.user.is_superuser %}
+            
+                    <a class="btn btn-danger col-md-2" href="{% url 'Elimina todo por 100' to.genero %}">
+                        Eliminar
+                    </a>
+                    <a class="btn btn-secondary col-md-2" href="{% url 'Editar todo por 100' to.genero %}">
+                        Editar
+                    </a>
+                    <ol>
+                            
+                    </ol>
+            
+                    {% else %}
+                    <ol>
+                            
+                    </ol>
+            
+                    {% endif %}
+                    
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+<div>
+    <a class="btn btn-secondary col-md-2" href="{% url 'Crear todo por 100' %}">
+        Agregar
+    </a>
+</div>
+
+
+{% else %}
+
+{% endif %}
+
+
+
+
+{% endblock %}

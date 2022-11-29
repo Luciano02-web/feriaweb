@@ -1,0 +1,42 @@
+{% extends "app_feria/padre1.html" %}
+
+
+
+{% block titulo %}
+
+<div class="text-center">
+    
+    <h1 style="color:black ;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px;">
+        Ingrese lo que desea buscar:                  
+    </h1>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Jeans' %}">
+        Jean
+    </a>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Remera' %}">
+        Remera
+    </a>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Camisa' %}">
+        Camisa
+    </a>
+    <ol>
+
+    </ol>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Pantalon' %}">
+        Pantalon/Short
+    </a>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Calzado' %}">
+        Calzado
+    </a>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Invernal' %}">
+        Ropa de invierno
+    </a>
+    <ol>
+        
+    </ol>
+    <a class="btn btn-secondary  col-md-2" href="{% url 'Buscar Campera' %}">
+        Campera
+    </a>
+    
+</div>
+ 
+{% endblock %}

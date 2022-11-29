@@ -1,0 +1,71 @@
+{% extends "app_feria/padre2.html" %}
+
+
+{% block titulo %}
+
+<h1 style="color:black ;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size: 50px; ;">
+    Ropa de invierno
+</h1>
+{% endblock %}
+
+
+{% block descripcion %}
+
+<div class="container text-center">
+    <div class="row">
+        {% for inv in inve %}
+        <div class="col-sm-6 align-items-center">
+            <div class="card-body">
+                
+                <a class="list-group-item" style="border-radius:110px;border:outset;border-width: 3px;" href="{% url 'Detalle_invernal' inv.id %}">
+                    
+                    {% if inv.imagen %}
+                    <img src="{{inv.imagen.url}}"style="
+                    width: 339px;
+                    height: 430px;">
+                    {% endif %}
+                        
+                    <h5 style="font-family:'Times New Roman', Times, serif ;">
+                        Codigo {{inv.codigo}}
+                    </h5>
+                    <h4 style="font-family:'Times New Roman', Times, serif ;">
+                        <strong>${{inv.precio}}</strong>
+                    </h4>
+                    
+                            
+                    {% if request.user.is_superuser %}
+        
+                        <a class="btn btn-danger col-md-2" href="{% url 'EliminaInvernal' inv.genero %}">
+                            Eliminar
+                        </a>
+                        <a class="btn btn-secondary col-md-2" href="{% url 'EditarInvernal' inv.genero %}">
+                            Editar
+                        </a>
+                        
+                        
+                    {% endif %}
+                    
+                </a>
+                
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% if request.user.is_superuser %}
+<div>
+    <a class="btn btn-secondary col-md-2" href="{% url 'Crear Invernal' %}">
+        Agregar
+    </a>
+</div>
+
+{% else %}
+
+{% endif %}
+
+
+
+{% endblock %}
